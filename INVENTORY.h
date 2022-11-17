@@ -1,6 +1,6 @@
 # include <string>
 class Inventory{
-	private:
+	protected:
 	string Name;
 	string directorName;
 	string genre;

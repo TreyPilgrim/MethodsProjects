@@ -7,7 +7,7 @@
 using namespace std;
     
 void Inventory::readfile(vector<Inventory> &list){
-    ifstream infile;
+	ifstream infile;
     string line;
     Inventory tmp;
 
@@ -292,10 +292,10 @@ string Inventory::getGenre(){
 }
 //setters
 
-void setMovieID(int movieID){
+void Inventory::setMovieID(int movieID){
     this -> movieID = movieID;
 }
-void setStock(int stock){
+void Inventory::setStock(int stock){
     this -> stock = stock;
 }
 

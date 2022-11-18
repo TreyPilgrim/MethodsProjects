@@ -40,12 +40,11 @@ void Inventory::readfile(vector<Inventory> &list){
             name = line;
             cin.ignore();
             getline(infile, directorName);
-			getline(infile, genre);
-			cin >> price;
-			cin >> stock;
-			cin >> movieID;
+	    getline(infile, genre);
+	    infile >> price;
+	    infile >> stock;
+	    infile >> movieID;
             Inventory tmp(name,directorName,genre,price,stock,movieID);
-
             list.push_back(tmp);
         }
     }

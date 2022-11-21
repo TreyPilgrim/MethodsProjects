@@ -333,19 +333,19 @@ void readfile(vector<Inventory>&list)
 
         getline(infile,line);
         directorName = line;
-        cout<< "It got the name." <<endl;
+        
         getline(infile,line);
         genre = line;
-        cout<< "It got the name." <<endl;
+        
         getline(infile,line);
         price=line;
-        cout<< "It got the name." <<endl;
+        
         getline(infile,line);
         stock =line;
-        cout<< "It got the name." <<endl;
+       
         getline(infile,line);
         movieID =line;
-        cout<< "It got the name." <<endl;
+        
         getline(infile, line);
 
         price1 = convertStringtoFloat(price);
@@ -359,14 +359,13 @@ void readfile(vector<Inventory>&list)
         tmp.setPrice(price1);
         tmp.setStock(stock1);
         tmp.setMovieID(movieID);
-        cout << tmp.getName()<<endl;
-        cout << tmp.getDirectorName()<<endl;
         list.push_back(tmp);
         cout << list.size()<<endl;
 
     }
 
     infile.close();
+    list.pop_back();
 }
 
 void display(vector<Inventory>list){

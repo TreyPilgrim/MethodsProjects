@@ -79,7 +79,7 @@ void Inventory:: viewLowtoHigh(vector<Inventory> &list){
             string price2;
             price1 = list[j].getPrice();
             price2 = list[indexSmallest].getPrice();
-            if (price1 >= price2) {
+            if (price1 <= price2) {
                 indexSmallest = j;
             }
         }

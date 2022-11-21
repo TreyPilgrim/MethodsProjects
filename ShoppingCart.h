@@ -1,4 +1,5 @@
-
+#ifndef SHOPPINGCART_H
+#define SHOPPINGCART_H
 #include <string>
 #include <vector>
 #include "INVENTORY.h"
@@ -6,23 +7,31 @@ using namespace std;
 
 class ShoppingCart {
 private:
-  int total;
-  string cartUserName;
-  string name;
-  int price;
-  int quantity;
+  int total =0 ;
+  string cartUserName ="";
+  string name ="";
+  int price=0;
+  int quantity=0;
 
 public:
   ShoppingCart();
-  void AddToCart(vector<Inventory> &list, vector<ShoppingCart> cart);
+  void AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart);
   void RemoveFromCart(string item);
-  void displayCartTotal(vector<ShoppingCart> cart, ShoppingCart item);
-  void displayCart(vector<ShoppingCart> cart, ShoppingCart item);
+  void displayCartTotal(vector<ShoppingCart> cart);
+  void displayCart(vector<ShoppingCart> cart);
   string GetName();
   int GetPrice();
   int GetQuantity();
-  string SetName(string name);
-  int SetPrice(int price);
-  int SetQuantity(int quantity);
+  void SetName(string name);
+  void SetPrice(int price);
+  void SetQuantity(int quantity);
   vector<ShoppingCart> cart;
 };
+
+
+void readfile(vector<Inventory> &list);
+void display(vector<Inventory> list);
+int convertStringtoInt(string str);
+float convertStringtoFloat(string str);
+
+#endif

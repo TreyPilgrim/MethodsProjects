@@ -1,6 +1,7 @@
 #include"INVENTORY.h"
 #include "shoppingcart.h"
 int main(){
+
 while (1) {
         string option;
         // displays menu
@@ -28,11 +29,18 @@ while (1) {
         cout << "2. View Inventory" << endl;
         cout << "3. Checkout" << endl;
         cout << "4. Edit Account" << endl
-		cout << "5. View Order History" << endl;
-		cout << "6. Logout" << endl;
-		cout << "7. Delete Account"<< endl;
+	cout << "5. View Order History" << endl;
+	out << "6. Logout" << endl;
+	cout << "7. Delete Account"<< endl;
         cout << "Enter choice: ";
         cin >> option2;
+	if (option == "1") {
+        cout << "1. View Items" << endl;
+        cout << "2. Checkout" << endl;
+        cout << "3. Delete Item" << endl;
+        cout << "4. Go Back" << endl
+        }
+	
         cout << endl;
 		}
   

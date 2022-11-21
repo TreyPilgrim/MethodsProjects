@@ -3,68 +3,55 @@
 #include <fstream>
 #include <vector>
 #include <string>
+# include <sstream>
 #include <cstdlib>
 using namespace std;
-    
-void Inventory::readfile(vector<Inventory> &list){
-	ifstream infile;
-    string line;
-    Inventory tmp;
 
-    infile.open("inventory.txt");
-
-    if(infile.is_open())
-    {
-        cout << "Successful inventory opening." << endl;
-    }
-
-    else
-    {
-        cout << "Couldn't locate file. Program closing." << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    while(getline(infile, line))
-    {
-       
-
-        if(line != "")
-        {
-            string name;
-            string directorName;
-            string genre;
-            float price;
-            int stock;
-            int movieID;
-
-            name = line;
-            cin.ignore();
-            getline(infile, directorName);
-	    getline(infile, genre);
-	    infile >> price;
-	    infile >> stock;
-	    infile >> movieID;
-            Inventory tmp(name,directorName,genre,price,stock,movieID);
-            list.push_back(tmp);
-        }
-    }
-
-    return;
+Inventory::Inventory(){
+    Name = "";
+    directorName="";
+    genre="";
+    price=0.0;
+    stock=0;
+    movieID= "";
 }
+Inventory::Inventory(string Name, string directorName, string genre, float price, int stock, string movieID){
+    this-> Name = Name;
+    this-> directorName = directorName;
+    this-> genre = genre;
+    this-> price = price;
+    this-> stock = stock;
+    this-> movieID = movieID;
+}
+
+
 
 
 // display functions
+
 void Inventory::viewAllInventory(vector<Inventory> &list){
-        for(int i=0; i< list.size(); ++i){
-            Inventory currItem;
-            currItem = list.at(i);
-            cout << currItem.getName() << " - " << currItem.getPrice() << endl;
-			
+    for(int i=0; i <list.size(); i = i+1 ){
+        int indexSmallest= i;
+        for(int j = i+1; j<list.size(); j = j+1) {
+            int compare;
+            string movie1;
+            string movie2;
+            movie1 = list[j].getName();
+            movie2 = list[indexSmallest].getName();
+            // compare the director at the smallest index and the index before the smallest
+            compare = movie2.compare(movie1);
+            // swap the director names if the index before the smallest is actually the smallest
+            if (compare >= 1) {
+                indexSmallest = j;
+            }
         }
-		return;
+        swap(list[i], list[indexSmallest]);
+    }
 }
+
+
 void Inventory::viewByDirector(vector<Inventory> &list){
-	    for(int i=0; i <list.size(); i = i+1 ){
+    for(int i=0; i <list.size(); i = i+1 ){
         int indexSmallest= i;
         for(int j = i+1; j<list.size(); j = j+1) {
             int compare;
@@ -80,18 +67,11 @@ void Inventory::viewByDirector(vector<Inventory> &list){
             }
         }
         swap(list[i], list[indexSmallest]);
-}
-
-	 for(int i=0; i< list.size(); ++i){
-            Inventory currItem;
-            currItem = list.at(i);
-            cout << currItem.getDirectorName() << " - " << currItem.getName() << " - " << currItem.getPrice() << endl;
-			
-        }
-return;
+    }
+    return;
 }
 void Inventory:: viewLowtoHigh(vector<Inventory> &list){
-	    for(int i=0; i <list.size(); i = i+1 ){
+    for(int i=0; i <list.size(); i = i+1 ){
         int indexSmallest= i;
         for(int j = i+1; j<list.size(); j = j+1) {
             int compare;
@@ -99,20 +79,13 @@ void Inventory:: viewLowtoHigh(vector<Inventory> &list){
             string price2;
             price1 = list[j].getPrice();
             price2 = list[indexSmallest].getPrice();
-           if (price1 >= price2) {
+            if (price1 >= price2) {
                 indexSmallest = j;
             }
         }
         swap(list[i], list[indexSmallest]);
 
     }
-	for(int i=0; i< list.size(); ++i){
-            Inventory currItem;
-            currItem = list.at(i);
-            cout << currItem.getName() << " - " << currItem.getPrice() << endl;
-			
-        }
-		return;
 
 
 }
@@ -132,15 +105,11 @@ void Inventory:: ViewHightoLow(vector<Inventory> &list) {
         swap(list[i], list[indexSmallest]);
 
     }
-    for (int i = 0; i < list.size(); ++i) {
-        Inventory currItem;
-        currItem = list.at(i);
-        cout << currItem.getName() << " - " << currItem.getPrice() << endl;
 
-    }}
+}
 
 
-	
+
 
 //searches
 bool Inventory::searchByDirector(vector<Inventory>&list, string directorName) {
@@ -183,6 +152,7 @@ bool Inventory::searchByDirector(vector<Inventory>&list, string directorName) {
         }
         return -1;
     }
+    return 1;
 }
 
 bool Inventory::searchByGenre(vector<Inventory> &list, string genre) {
@@ -225,7 +195,7 @@ bool Inventory::searchByGenre(vector<Inventory> &list, string genre) {
         }
         return -1;
     }
-
+    return 1;
 }
 
 bool Inventory::searchByName(vector<Inventory> &list, string Name) {
@@ -266,35 +236,145 @@ bool Inventory::searchByName(vector<Inventory> &list, string Name) {
         else{
             return mid;
         }
-        return -1;
+        return 0;
     }
+    return 1;
 }
 
 //getters
 int Inventory::getStock(){
-	return stock;
+    return stock;
 }
 int Inventory::getPrice(){
-	return price;
+    return price;
 }
 string Inventory::getName(){
-	return Name;
+    return Name;
 }
-int Inventory::getMovieID(){
-	return movieID;
+string Inventory::getMovieID(){
+    return movieID;
 }
 string Inventory::getDirectorName(){
-	return directorName;
+    return directorName;
 }
 string Inventory::getGenre(){
-	return genre;
+    return genre;
 }
 //setters
 
-void Inventory::setMovieID(int movieID){
+void Inventory::setMovieID(string movieID){
     this -> movieID = movieID;
 }
 void Inventory::setStock(int stock){
     this -> stock = stock;
 }
 
+void Inventory::setName(string Name){
+    this-> Name = Name;
+}
+void Inventory:: setPrice (int price){
+    this -> price =price;
+}
+void Inventory::setDirectorName(string directorName){
+    this ->  directorName = directorName;
+};
+void Inventory::setGenre(string genre){
+    this -> genre = genre;
+
+}
+void readfile(vector<Inventory> &list);
+void display(vector<Inventory> list);
+int convertStringtoInt(string str);
+float convertStringtoFloat(string str);
+
+int convertStringtoInt(string str){
+    stringstream ss;
+    ss << str;
+    int num;
+    ss>> num;
+    return num;
+}
+float convertStringtoFloat(string str){
+    stringstream ss;
+    ss << str;
+    float num;
+    ss>> num;
+    return num;
+}
+
+void readfile(vector<Inventory>&list)
+{
+    ifstream infile;
+    string line;
+
+
+    infile.open("INVENTORY.txt");
+
+    if(infile.is_open())
+    {
+        cout << "Successful inventory opening." << endl;
+    }
+
+    else
+    {
+        cout << "Couldn't locate file. Program closing." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+
+    while(getline(infile, line))
+    {
+
+        string Name, directorName, genre,price,stock, movieID;
+        float price1;
+        float stock1;
+        Name = line;
+        cout<<Name<<endl;
+
+        getline(infile,line);
+        directorName = line;
+        cout<< "It got the name." <<endl;
+        getline(infile,line);
+        genre = line;
+        cout<< "It got the name." <<endl;
+        getline(infile,line);
+        price=line;
+        cout<< "It got the name." <<endl;
+        getline(infile,line);
+        stock =line;
+        cout<< "It got the name." <<endl;
+        getline(infile,line);
+        movieID =line;
+        cout<< "It got the name." <<endl;
+        getline(infile, line);
+
+        price1 = convertStringtoFloat(price);
+        stock1 = convertStringtoInt(stock);
+
+        Inventory tmp;
+        tmp.setName(Name);
+        cout << tmp.getName()<<endl;
+        tmp.setDirectorName(directorName);
+        tmp.setGenre(genre);
+        tmp.setPrice(price1);
+        tmp.setStock(stock1);
+        tmp.setMovieID(movieID);
+        cout << tmp.getName()<<endl;
+        cout << tmp.getDirectorName()<<endl;
+        list.push_back(tmp);
+        cout << list.size()<<endl;
+
+    }
+
+    infile.close();
+}
+
+void display(vector<Inventory>list){
+    for(int i=0; i< list.size(); i++){
+        Inventory currItem;
+        currItem = list.at(i);
+        cout << i+1<<". "<<currItem.getName()<<endl;
+        cout << currItem.getDirectorName()<<endl;
+
+    }
+}

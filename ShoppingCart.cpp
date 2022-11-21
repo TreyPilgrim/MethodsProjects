@@ -6,11 +6,10 @@
 using namespace std;
  
 ShoppingCart::ShoppingCart() {
-  cout << "Creating a new shopping cart" << endl;
   total = 0;
 }
 string ShoppingCart::GetName() {
-  return cartUserName;
+  return name;
 }
 int ShoppingCart::GetPrice() {
   return price;
@@ -18,19 +17,16 @@ int ShoppingCart::GetPrice() {
 int ShoppingCart::GetQuantity() {
   return quantity;
 }
-string ShoppingCart::SetName(string name){
+void ShoppingCart::SetName(string name){
   this->name = name;
-  return name;
 }
-int ShoppingCart::SetPrice(int price) {
+void ShoppingCart::SetPrice(int price) {
   this->price = price;
-  return price;
 }
-int ShoppingCart::SetQuantity(int quantity) {
+void ShoppingCart::SetQuantity(int quantity) {
   this->quantity = quantity;
-  return quantity;
 }
-void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> cart) {
+void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart) {
   int userInput;
   Inventory currMovie;
   ShoppingCart item;
@@ -86,20 +82,23 @@ if(oldsize == cart.size())
 cout << "item not found in cart. Nothing removed." << endl;
 }
 
-void ShoppingCart::displayCartTotal(vector<ShoppingCart> cart, ShoppingCart item) {
+void ShoppingCart::displayCartTotal(vector<ShoppingCart> cart) {
   total = 0;
   for (int i = 0; i < cart.size(); i++) {
-    total += cart.at(i).SetQuantity(item.GetQuantity()) * cart.at(i).SetPrice(item.GetPrice());
+    ShoppingCart curritem;
+    curritem = cart.at(i);
+    total += (curritem.GetPrice() * curritem.GetQuantity());
   }
   cout << "Total: " << total << endl;
   return;
 }
 
-void ShoppingCart::displayCart(vector<ShoppingCart> cart, ShoppingCart item) {
+void ShoppingCart::displayCart(vector<ShoppingCart> cart) {
   cout << "Item: "<< "  | " << " Quantity" << endl;
   for (int i = 0; i < cart.size(); i++) {
-      cout << cart.at(i).SetName(item.GetName()) << "   -   " << cart.at(i).SetQuantity(item.GetQuantity()) << endl;
+    ShoppingCart curritem;
+    curritem = cart.at(i);
+      cout << curritem.GetName() << "   -   " << curritem.GetQuantity()<< endl;
   }
   return;
 }
-

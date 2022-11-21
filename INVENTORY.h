@@ -1,5 +1,10 @@
-# include <string>
-# include <vector>
+#ifndef INVENTORY_H
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <cstdlib>
+#include <sstream>
 using namespace std;
 class Inventory{
 protected:
@@ -33,5 +38,9 @@ public:
     bool searchByDirector(vector<Inventory>&list, string directorName);
     bool searchByGenre(vector<Inventory>&list, string genre);
 };
+
+
+
+#endif
 	
 	

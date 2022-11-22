@@ -28,10 +28,4 @@ public:
   vector<ShoppingCart> cart;
 };
 
-
-void readfile(vector<Inventory> &list);
-void display(vector<Inventory> list);
-int convertStringtoInt(string str);
-float convertStringtoFloat(string str);
-
 #endif

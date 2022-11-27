@@ -1,15 +1,20 @@
-#include "ShoppingCart.h"
-#include "INVENTORY.h"
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
-# include <sstream>
 #include <cstdlib>
+#include <sstream>
+#include "ShoppingCart.h"
 using namespace std;
-
-using namespace std;
+void readfile(vector<Inventory> &list);
+void display(vector<Inventory> list);
+int convertStringtoInt(string str);
+float convertStringtoFloat(string str);
 int main() {
+    vector <Inventory> list;
+    vector <ShoppingCart> item;
+    ShoppingCart B;
+    Inventory A;
     while (1) {
         string option;
         // displays menu
@@ -48,7 +53,7 @@ int main() {
                     break;
                 }
                 if(option2 =="1"){
-                    displayCart();
+                    B.displayCart(item);
                     continue;
                 }
                 if(option2=="2"){
@@ -64,38 +69,38 @@ int main() {
 
                   if(option == "1") {
                       string addOption;
-                      viewAllInventory(list);
+                      A.viewAllInventory(list);
                       display(list);
                       cout << "Do you want to add an item? Y or N" << endl;
                       cin >> addOption;
                       if (addOption == "Y" or addOption == "y") {
                           int InventoryOption;
-                          addToCart(list, items);
+                          B.addToCart(list, items);
                       } else {
                           break;
                       }
                       if (option == "2") {
                           string addOption;
-                          viewByGenre(list);
+                          A.viewByGenre(list);
                           display(list);
                           cout << "Do you want to add an item? Y or N" << endl;
                           cin >> addOption;
                           if (addOption == "Y" or addOption == "y") {
                               int InventoryOption;
-                              addToCart(list, items);
+                              B.addToCart(list, items);
                           } else {
                               break;
                           }
                       }
                       if (option == "3") {
                           string addOption;
-                          viewByDirector(list);
+                          A.viewByDirector(list);
                           display(list);
                           cout << "Do you want to add an item? Y or N" << endl;
                           cin >> addOption;
                           if (addOption == "Y" or addOption == "y") {
                               int InventoryOption;
-                              addToCart(list, items);
+                              B.addToCart(list, items);
                           } else {
                               break;
                           }
@@ -103,26 +108,27 @@ int main() {
                       }
                       if (option == "4") {
                           string addOption;
-                          viewLowtoHigh(list);
+                          A.viewLowtoHigh(list);
                           display(list);
                           cout << "Do you want to add an item? Y or N" << endl;
                           cin >> addOption;
                           if (addOption == "Y" or addOption == "y") {
                               int InventoryOption;
-                              addToCart(list, items);
+                              B.addToCart(list, items);
                           } else {
                               break;
                           }
                       }
                       if (option == "5") {
                           string addOption;
-                          viewHightoLow(list);
+                          A.viewHightoLow(list);
                           display(list);
                           cout << "Do you want to add an item? Y or N" << endl;
                           cin >> addOption;
                           if (addOption == "Y" or addOption == "y") {
                               int InventoryOption;
-                              addToCart(list, items);
+                              B.
+                                  addToCart(list, items);
                           } else {
                               break;
                           }
@@ -155,3 +161,80 @@ int main() {
             return 0;
         };
     }
+  void readfile(vector<Inventory>&list)
+{
+    ifstream infile;
+    string line;
+
+
+    infile.open("INVENTORY.txt");
+
+    if(infile.is_open())
+    {
+        cout << "Successful inventory opening." << endl;
+    }
+
+    else
+    {
+        cout << "Couldn't locate file. Program closing." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+
+    while(getline(infile, line))
+    {
+
+        string Name, directorName, genre,price,stock, movieID;
+        float price1;
+        float stock1;
+        Name = line;
+
+        getline(infile,line);
+        directorName = line;
+      
+        getline(infile,line);
+        genre = line;
+       
+        getline(infile,line);
+        price=line;
+        
+        getline(infile,line);
+        stock =line;
+       
+        getline(infile,line);
+        movieID =line;
+       
+        getline(infile, line);
+
+        price1 = convertStringtoFloat(price);
+        stock1 = convertStringtoInt(stock);
+
+        Inventory tmp;
+        tmp.setName(Name);
+        
+        tmp.setDirectorName(directorName);
+        tmp.setGenre(genre);
+        tmp.setPrice(price1);
+        tmp.setStock(stock1);
+        tmp.setMovieID(movieID);
+        
+        list.push_back(tmp);
+        
+
+    }
+
+    infile.close();
+    list.pop_back();
+  
+}
+
+void display(vector<Inventory>list){
+    for(int i=0; i< list.size(); i++){
+        Inventory currItem;
+        currItem = list.at(i);
+        cout << i+1<<". "<<currItem.getName()<<endl;
+        cout << currItem.getDirectorName()<<endl;
+
+    }
+}
+            

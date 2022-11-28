@@ -2,6 +2,8 @@
 #define SHOPPINGCART_H
 #include <string>
 #include <vector>
+#include <iostream>
+#include <fstream>
 #include "INVENTORY.h"
 using namespace std;
 
@@ -15,10 +17,12 @@ private:
 
 public:
   ShoppingCart();
-  void AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart);
+  void AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart, string InventoryFile, string ShoppingFile);
   void RemoveFromCart(string item);
+  void RemoveCartFromPerson(string name)
   void displayCartTotal(vector<ShoppingCart> cart);
   void displayCart(vector<ShoppingCart> cart);
+  string GetUserName();
   string GetName();
   int GetPrice();
   int GetQuantity();
@@ -27,5 +31,11 @@ public:
   void SetQuantity(int quantity);
   vector<ShoppingCart> cart;
 };
+
+
+void readfile(vector<Inventory> &list);
+void display(vector<Inventory> list);
+int convertStringtoInt(string str);
+float convertStringtoFloat(string str);
 
 #endif

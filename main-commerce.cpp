@@ -161,6 +161,22 @@ int main() {
             return 0;
         };
     }
+int convertStringtoInt(string str){
+    stringstream ss;
+    ss << str;
+    int num;
+    ss>> num;
+    return num;
+}
+float convertStringtoFloat(string str){
+    stringstream ss;
+    ss << str;
+    float num;
+    ss>> num;
+    return num;
+}
+
+
   void readfile(vector<Inventory>&list)
 {
     ifstream infile;
@@ -227,6 +243,14 @@ int main() {
     list.pop_back();
   
 }
-
-
+void display(vector<Inventory>list){
+    for(int i=0; i< list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
+        Inventory currItem;
+        currItem = list.at(i);
+        cout << i + 1 << ". " << currItem.getName() << endl;
+        cout << "Director:" << currItem.getDirectorName() << endl;
+        cout << "Genre:" << currItem.getGenre() << endl;
+        cout << "Price:" << currItem.getPrice() << endl;
+    }
             

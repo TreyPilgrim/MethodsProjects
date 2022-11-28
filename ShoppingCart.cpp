@@ -1,12 +1,18 @@
 #include <cstring>
+#include <string>
 #include <iostream>
+#include <ostream>
+#include <fstream>
 #include <vector>
 #include <cstdlib>
 #include "ShoppingCart.h"
 using namespace std;
- 
+
 ShoppingCart::ShoppingCart() {
   total = 0;
+}
+ShoppingCart::GetUserName() {
+  return userName;
 }
 string ShoppingCart::GetName() {
   return name;
@@ -26,7 +32,7 @@ void ShoppingCart::SetPrice(int price) {
 void ShoppingCart::SetQuantity(int quantity) {
   this->quantity = quantity;
 }
-void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart) {
+void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart, string InventoryFile, string ShoppingFile) {
   int userInput;
   Inventory currMovie;
   ShoppingCart item;
@@ -63,9 +69,34 @@ void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart
     item.SetQuantity(usernum);
     item.SetPrice(price);
     cart.push_back(item);
-    
+
+  //ofstream ShoppingFile;
+  
+  fstream file;
+  
+  file.open(ShoppingFile, ios::app);
+  if (file.is_open()) {
+    file << name << endl << usernum << endl << price << endl;
   }
 
+  file.close();
+  }
+void ShoppingCart::RemoveCartFromPerson(string name) {
+   int oldsize = cart.size();
+
+   for (int i = 0; i < cart.size(); i++){
+
+    if (cart.at(i).GetName() == item)
+
+    cart.erase(cart.begin()+i);
+
+}
+
+if(oldsize == cart.size()) {
+
+cout << userName Nothing  << endl;
+}
+}
 void ShoppingCart::RemoveFromCart(string item) {
   int oldsize = cart.size();
 
@@ -77,10 +108,11 @@ void ShoppingCart::RemoveFromCart(string item) {
 
 }
 
-if(oldsize == cart.size())
+if(oldsize == cart.size()) {
 
 cout << "item not found in cart. Nothing removed." << endl;
 }
+  }
 
 void ShoppingCart::displayCartTotal(vector<ShoppingCart> cart) {
   total = 0;
@@ -89,7 +121,7 @@ void ShoppingCart::displayCartTotal(vector<ShoppingCart> cart) {
     curritem = cart.at(i);
     total += (curritem.GetPrice() * curritem.GetQuantity());
   }
-  cout << "Total: " << total << endl;
+  cout << "Total: $" << total << endl;
   return;
 }
 

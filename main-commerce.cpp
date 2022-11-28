@@ -228,13 +228,5 @@ int main() {
   
 }
 
-void display(vector<Inventory>list){
-    for(int i=0; i< list.size(); i++){
-        Inventory currItem;
-        currItem = list.at(i);
-        cout << i+1<<". "<<currItem.getName()<<endl;
-        cout << currItem.getDirectorName()<<endl;
 
-    }
-}
             

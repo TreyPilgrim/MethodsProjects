@@ -71,70 +71,27 @@ int main() {
                         string addOption;
                         A.viewAllInventory(list);
                         display(list);
-                        cout << "Do you want to add an item? Y or N" << endl;
-                        cin >> addOption;
-                        if ((addOption == "Y") or (addOption == "y")) {
-                            int InventoryOption;
-                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
-                        }
-                        else {
-                            break;
-                        }
-
                     }
                     if (option == "2") {
                         string addOption;
                         A.viewByGenre(list);
                         display(list);
-                        cout << "Do you want to add an item? Y or N" << endl;
-                        cin >> addOption;
-                        if ((addOption == "Y") or (addOption == "y")) {
-                            int InventoryOption;
-                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
-                        } else {
-                            break;
-                        }
                     }
                     if (option == "3") {
                         string addOption;
                         A.viewByDirector(list);
                         display(list);
-                        cout << "Do you want to add an item? Y or N" << endl;
-                        cin >> addOption;
-                        if ((addOption == "Y") or (addOption == "y")) {
-                            int InventoryOption;
-                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
-                        } else {
-                            break;
-                        }
 
                     }
                     if (option == "4") {
                         string addOption;
                         A.viewLowtoHigh(list);
                         display(list);
-                        cout << "Do you want to add an item? Y or N" << endl;
-                        cin >> addOption;
-                        if ((addOption == "Y") or (addOption == "y")) {
-                            int InventoryOption;
-                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
-                        } else {
-                            break;
-                        }
                     }
                     if (option == "5") {
                         string addOption;
                         A.ViewHightoLow(list);
                         display(list);
-                        cout << "Do you want to add an item? Y or N" << endl;
-                        cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
-                            int InventoryOption;
-                            B.
-                                    AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
-                        } else {
-                            break;
-                        }
 
                     }
                     if (option == "6"){
@@ -257,3 +214,4 @@ int main() {
                 cout << "Price:" << currItem.getPrice() << endl;
             }
         }
+

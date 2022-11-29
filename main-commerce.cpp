@@ -78,9 +78,12 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
+                            B.displayCart(item);
+                            B.displayCartTotal(item);
+                            break;
                         } else {
                             break;
                         }
@@ -93,9 +96,12 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
+                            B.displayCart(item);
+                            B.displayCartTotal(item);
+                            break;
                         } else {
                             break;
                         }
@@ -106,9 +112,12 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
+                            B.displayCart(item);
+                            B.displayCartTotal(item);
+                            break;
                         } else {
                             break;
                         }
@@ -120,9 +129,12 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
+                            B.displayCart(item);
+                            B.displayCartTotal(item);
+                            break;
                         } else {
                             break;
                         }
@@ -133,9 +145,12 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
+                            B.displayCart(item);
+                            B.displayCartTotal(item);
+                            break;
                         } else {
                             break;
                         }
@@ -152,23 +167,11 @@ int main() {
                     }
                 }
 
+                else if (option == "2") {
+                    cout << "not completed";
+
+                }
                 else if (option == "3") {
-                    cout << "not completed";
-
-                }
-                else if (option == "4") {
-                    cout << "not completed";
-
-                }
-                else if (option == "5") {
-                    cout << "not completed";
-
-                }
-                else if (option == "6") {
-                    cout << "not completed";
-
-                }
-                   else if (option == "7") {
                     cout << "not completed";
 
                 }
@@ -273,4 +276,3 @@ int main() {
                 cout << "Price:" << currItem.getPrice() << endl;
             }
         }
-

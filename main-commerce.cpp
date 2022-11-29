@@ -67,43 +67,44 @@ int main() {
                     cout << "6.  Search By Name " << endl;
                     cout << "7.  Search By Genre " << endl;
                     cout << "8.  Search By Director " << endl;
+                    cout << "Enter Your Choice"<< endl;
                     cin >> option3;
                     cout << endl;
 
-                    if(option == "1") {
+                    if(option3 == "1") {
                         string addOption;
                         A.viewAllInventory(list);
                         display(list);
                     }
-                    if (option == "2") {
+                    if (option3 == "2") {
                         string addOption;
                         A.viewByGenre(list);
                         display(list);
                     }
-                    if (option == "3") {
+                    if (option3 == "3") {
                         string addOption;
                         A.viewByDirector(list);
                         display(list);
 
                     }
-                    if (option == "4") {
+                    if (option3 == "4") {
                         string addOption;
                         A.viewLowtoHigh(list);
                         display(list);
                     }
-                    if (option == "5") {
+                    if (option3 == "5") {
                         string addOption;
                         A.ViewHightoLow(list);
                         display(list);
 
                     }
-                    if (option == "6"){
+                    if (option3 == "6"){
                         cout <<"not finished yet;"  << endl;
                     }
-                    if (option == "7"){
+                    if (option3 == "7"){
                         cout <<"not finished yet;"  << endl;
                     }
-                    if (option == "8"){
+                    if (option3 == "8"){
                         cout <<"not finished yet;"  << endl;
                     }
                 }

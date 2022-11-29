@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -74,9 +73,9 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
                         }
                         else {
                             break;
@@ -89,9 +88,9 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
                         } else {
                             break;
                         }
@@ -102,9 +101,9 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
                         } else {
                             break;
                         }
@@ -116,23 +115,23 @@ int main() {
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
-                        if (addOption == "Y" or addOption == "y") {
+                        if ((addOption == "Y") or (addOption == "y")) {
                             int InventoryOption;
-                            B.addToCart(list, items);
+                            B.AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
                         } else {
                             break;
                         }
                     }
                     if (option == "5") {
                         string addOption;
-                        A.viewHightoLow(list);
+                        A.ViewHightoLow(list);
                         display(list);
                         cout << "Do you want to add an item? Y or N" << endl;
                         cin >> addOption;
                         if (addOption == "Y" or addOption == "y") {
                             int InventoryOption;
                             B.
-                                    addToCart(list, items);
+                                    AddToCart(list, item, "INVENTORY.txt", "ShoppingCart.txt");
                         } else {
                             break;
                         }
@@ -258,4 +257,3 @@ int main() {
                 cout << "Price:" << currItem.getPrice() << endl;
             }
         }
-            

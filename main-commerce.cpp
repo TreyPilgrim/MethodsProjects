@@ -15,6 +15,7 @@ int main() {
     vector <ShoppingCart> item;
     ShoppingCart B;
     Inventory A;
+    readfile(list);
     while (1) {
         string option;
         // displays menu

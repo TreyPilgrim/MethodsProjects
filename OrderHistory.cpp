@@ -28,8 +28,7 @@ void AddOrdHistory(string& item, vector<ShoppingCart>& cart, std::string OrderFi
 
 		if (UserName == UserName)
 		{
-			setOrderContents(currentitem.GetName())
-			setUserName(currentitem.GetUserName())
+			
 			fstream file;
 
 			file.open(OrderFile, ios::app);

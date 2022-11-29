@@ -57,6 +57,7 @@ int main() {
                     continue;
                 }
                 if(option2=="2"){
+                    string option3;
                     cout<< "Display Options"<<endl;
                     cout << "1. View All " << endl;
                     cout << "2. View by Genre " << endl;
@@ -66,6 +67,8 @@ int main() {
                     cout << "6.  Search By Name " << endl;
                     cout << "7.  Search By Genre " << endl;
                     cout << "8.  Search By Director " << endl;
+                    cin >> option3;
+                    cout << endl;
 
                     if(option == "1") {
                         string addOption;

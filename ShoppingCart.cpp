@@ -80,6 +80,14 @@ void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart
   }
 
   file.close();
+      ofstream file2;
+    file2.open(ShoppingFile);
+    if (file2.is_open()) {
+        for (int i = 0; i < list.size(); ++i) {
+            currMovie = list.at(i);
+            file  << currMovie.getName() << endl << currMovie.getDirectorName() << endl << currMovie.getGenre() << currMovie.getPrice() << currMovie.getStock() << currMovie.getMovieID();
+        }
+    }
   }
 void ShoppingCart::RemoveCartFromPerson(string name) {
    int oldsize = cart.size();

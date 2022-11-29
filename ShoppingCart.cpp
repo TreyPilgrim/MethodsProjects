@@ -11,8 +11,8 @@ using namespace std;
 ShoppingCart::ShoppingCart() {
   total = 0;
 }
-ShoppingCart::GetUserName() {
-  return userName;
+string ShoppingCart::GetUserName() {
+  return cartUserName;
 }
 string ShoppingCart::GetName() {
   return name;
@@ -86,16 +86,16 @@ void ShoppingCart::RemoveCartFromPerson(string name) {
 
    for (int i = 0; i < cart.size(); i++){
 
-    if (cart.at(i).GetName() == item)
+    if (cart.at(i).GetName() == name)
 
     cart.erase(cart.begin()+i);
 
 }
 
-if(oldsize == cart.size()) {
+  if(oldsize == cart.size()) {
 
-cout << userName Nothing  << endl;
-}
+    cout << userName Nothing  << endl;
+  }
 }
 void ShoppingCart::RemoveFromCart(string item) {
   int oldsize = cart.size();

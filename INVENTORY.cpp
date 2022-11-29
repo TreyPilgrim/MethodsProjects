@@ -70,6 +70,27 @@ void Inventory::viewByDirector(vector<Inventory> &list){
     }
     return;
 }
+
+void Inventory::viewByGenre(vector<Inventory> &list){
+    for(int i=0; i <list.size(); i = i+1 ){
+        int indexSmallest= i;
+        for(int j = i+1; j<list.size(); j = j+1) {
+            int compare;
+            string genre1;
+            string genre2;
+            genre1 = list[j].getGenre();
+            genre2 = list[indexSmallest].getGenre();
+            // compare the director at the smallest index and the index before the smallest
+            compare = genre2.compare(genre1);
+            // swap the director names if the index before the smallest is actually the smallest
+            if (compare >= 1) {
+                indexSmallest = j;
+            }
+        }
+        swap(list[i], list[indexSmallest]);
+    }
+    return;
+}
 void Inventory:: viewLowtoHigh(vector<Inventory> &list){
     for(int i=0; i <list.size(); i = i+1 ){
         int indexSmallest= i;

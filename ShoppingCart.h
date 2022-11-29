@@ -19,7 +19,7 @@ public:
   ShoppingCart();
   void AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart, string InventoryFile, string ShoppingFile);
   void RemoveFromCart(string item);
-  void RemoveCartFromPerson(string name)
+  void RemoveCartFromPerson(string name);
   void displayCartTotal(vector<ShoppingCart> cart);
   void displayCart(vector<ShoppingCart> cart);
   string GetUserName();

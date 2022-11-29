@@ -67,7 +67,7 @@ int main() {
                     cout << "6.  Search By Name " << endl;
                     cout << "7.  Search By Genre " << endl;
                     cout << "8.  Search By Director " << endl;
-                    cout << "Enter Your Choice"<< endl;
+                    cout << "Enter Your Choice: ";
                     cin >> option3;
                     cout << endl;
 

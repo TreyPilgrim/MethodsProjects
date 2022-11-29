@@ -152,11 +152,23 @@ int main() {
                     }
                 }
 
-                else if (option == "2") {
+                else if (option == "3") {
                     cout << "not completed";
 
                 }
-                else if (option == "3") {
+                else if (option == "4") {
+                    cout << "not completed";
+
+                }
+                else if (option == "5") {
+                    cout << "not completed";
+
+                }
+                else if (option == "6") {
+                    cout << "not completed";
+
+                }
+                   else if (option == "7") {
                     cout << "not completed";
 
                 }

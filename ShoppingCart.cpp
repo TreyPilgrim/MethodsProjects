@@ -94,7 +94,7 @@ void ShoppingCart::RemoveCartFromPerson(string name) {
 
   if(oldsize == cart.size()) {
 
-    cout << userName Nothing  << endl;
+    cout << cartUserName << endl;
   }
 }
 void ShoppingCart::RemoveFromCart(string item) {

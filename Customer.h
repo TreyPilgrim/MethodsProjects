@@ -4,6 +4,7 @@
 #include <vector>
 #include "ShoppingCart.h"
 #include "Shipping.h"
+#include "Payment.h"
 class Customer;
 using ptr = std::shared_ptr<Customer>;
 using namespace std;
@@ -23,9 +24,7 @@ public:
     Shipping shipment;
 
     // Payment
-    int cardNum [16];
-    int cardExp {0000};
-    int cardSecurity {000};
+    Payment card;
 
     Customer():
             next {nullptr}, prev {nullptr}, userName{"Default"} {}
@@ -36,6 +35,7 @@ public:
     string getName() const;
 
     bool setCartNum (vector<ShoppingCart> cart);
+
 
 
 };

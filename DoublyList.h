@@ -2,10 +2,11 @@
 #include <string>
 #include <memory>
 #include "Customer.h"
+#include "Payment.h"
 using namespace std;
 using ptr = std::shared_ptr<Customer>;
 
-class DoublyList
+class DoublyList: public Payment
 {
 private:
     ptr head;
@@ -15,6 +16,17 @@ private:
     bool search(ptr &customer, const string& userName);
     bool remove(ptr &customer, const string& userName);
 
+    void changeName(ptr &customer, const string& oldName, const string& newName);
+    void changePass(ptr &customer, const string &userName, const string& newPass);
+    void changeAddy (ptr & customer, const string &userName, const string &newAddy);
+    void changeCity(ptr &customer, const string &userName, const string &newCity);
+    void changeState(ptr &customer, const string &userName, const string &newState);
+    void changeZip(ptr &customer, const string &userName, const int newZip);
+    void changeCard(ptr &customer, const string &userName, int newNum);
+    void changeExpDate(ptr &customer, const string &userName, int newExpDate);
+    void changeSecurCode(ptr &customer, const string &userName, int code);
+    void changeCardName(ptr &customer, const string &userName, string newName);
+
 public:
     DoublyList():
             head {nullptr}, tail {nullptr} {}
@@ -22,9 +34,29 @@ public:
     ~DoublyList();
 
     bool search(const string& userName);
+    bool login (string userName, string password);
 
     void append(string &userName);
     void prepend(string &userName);
+
+    // basic info editing
+    void changeName(string oldName, string newName);
+    void changePass(string userName, string newPass);
+
+    // shipping editing
+    void changeAddy(const string& userName, const string& newAddy);
+    void changeCity(const string& userName, const string& newCity);
+    void changeState(const string& userName, const string& newState);
+    void changeZip(const string& userName, int newZip);
+
+    // Payment editing
+    void changeCard(const string &userName, int newNum);
+    void changeExpDate(const string &userName, int newExpDate);
+    void changeSecurCode(const string &userName, int code);
+    void changeCardName(const string &userName, string newName);
+
+    bool remove(const string& userName) { return remove(this->head, userName);}
+    bool login (ptr &customer,string userName, string password);
 
 
 };

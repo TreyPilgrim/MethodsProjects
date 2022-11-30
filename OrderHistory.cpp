@@ -1,30 +1,30 @@
 #include "OrderHistory.h"
-#include <string>
 #include "ShoppingCart.h"
 
 
 
-std::string OrderHistory::setUserName(std::string username) {
+std::string OrderHistory::SetUserName(std::string username) {
 
 	this->UserName = UserName;
 }
 
-std::string OrderHistory::setOrderContents(std::string item) {
-	
-	item = curre
+void OrderHistory::setOrdContents() {
+
 }
 
 
-void AddOrdHistory(string& item, vector<ShoppingCart>& cart, std::string OrderFile) {
+void AddOrdHistory(string UserName, vector<ShoppingCart>& cart, std::string OrderFile) {
 
 	ShoppingCart currentitem;
 
-	for (i = 0; i < cart.size; i++) {
+	for(int i = 0; i < cart.size; i++) {
 
-		current item = cart.at(i);
+		currentitem = cart.at(i);
 
-		if (UserName == UserName)
-		{
+		if (UserName == cart.GetUserName(){
+            append(cart.GetUserName(),cart.GetItme());
+            }
+    }
 			
 			fstream file;
 
@@ -36,15 +36,15 @@ void AddOrdHistory(string& item, vector<ShoppingCart>& cart, std::string OrderFi
 
 
 
-	}
 
-}
+
+
 void ViewOrdHistory();
 void DeleteOrdHistory();
 
-void OrderHistory::append(int data) {
+void OrderHistory::append(string UserName, string OrderContents) {
 
-	node* tmp = new node(data);
+	node* tmp = new node(UserName, OrderContents);
 	tmp->prev = tail;
 
 	if (head == nullptr)
@@ -57,11 +57,11 @@ void OrderHistory::append(int data) {
 	}
 	tail = tmp;
 }
-bool OrderHistory::remove(int data) {
+bool OrderHistory::remove(string UserName, string OrderContents) {
 	node* tmp = head;
 	while (tmp != nullptr)
 	{
-		if (tmp->data == data)
+		if (tmp->UserName== UserName)
 		{
 			if (tmp->prev != nullptr)
 			{
@@ -90,7 +90,7 @@ bool OrderHistory::remove(int data) {
 	return false;
 
 }
-void OrderHistory::display(int data, std::ostream &os) {
+void OrderHistory::display(string UserName, string OrderContents, std::ostream &os) {
 	node* tmp = head;
 	
 	while (tmp != nullptr)
@@ -99,8 +99,8 @@ void OrderHistory::display(int data, std::ostream &os) {
 		tmp = tmp->next;
 	}
 }
-void OrderHistory::prepend(int data) {
-	node* tmp = new node(data);
+void OrderHistory::prepend(string UserName, string OrderContents) {
+	node* tmp = new node(UserName, OrderContents);
 
 	tmp->next = head;
 

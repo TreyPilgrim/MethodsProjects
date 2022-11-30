@@ -91,7 +91,7 @@ void ShoppingCart::AddToCart(vector<Inventory> &list, vector<ShoppingCart> &cart
     if (file2.is_open()) {
         for (int i = 0; i < list.size(); ++i) {
             currMovie = list.at(i);
-            file2  << currMovie.getName() << endl << currMovie.getDirectorName() << endl << currMovie.getGenre() << currMovie.getPrice() << currMovie.getStock() << currMovie.getMovieID();
+            file2  << currMovie.getName() << endl << currMovie.getDirectorName() << endl << currMovie.getGenre() << endl << currMovie.getPrice() << endl << currMovie.getStock() << endl << currMovie.getMovieID();
         }
     }
 }

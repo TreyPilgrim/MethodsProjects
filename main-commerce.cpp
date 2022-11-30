@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <sstream>
 #include "ShoppingCart.h"
+#include "OrderHistory.h"
 using namespace std;
 void readfile(vector<Inventory> &list);
 void display(vector<Inventory> list);
@@ -15,6 +16,7 @@ int main() {
     vector <ShoppingCart> item;
     ShoppingCart B;
     Inventory A;
+    OrderHistory C;
     readfile(list);
     while (1) {
         string option;
@@ -157,34 +159,50 @@ int main() {
 
                     }
                     if (option3 == "6") {
-                        cout << "not finished yet;" << endl;
+                        string nameOption;
+                        cout << "What are you searching for?" << endl;
+                        cin >> nameOption;
+                        A.searchByName(list ,nameOption);
+                        break;
+
                     }
                     if (option3 == "7") {
-                        cout << "not finished yet;" << endl;
+                        string genreOption;
+                        cout << "What are you searching for?" << endl;
+                        cin >> genreOption;
+                        A.searchByGenre(list ,genreOption);
+                        break;
                     }
                     if (option3 == "8") {
-                        cout << "not finished yet;" << endl;
+                        string directorOption;
+                        cout << "What are you searching for?" << endl;
+                        cin >> directorOption;
+                        A.searchByGenre(list ,directorOption);
+                        break;
                     }
-                } 
+                }
                 else if (option2 == "3") {
-                    cout << "not completed";
-                } 
+                    C.AddOrdHistory();
+                    B.RemoveCartFromPerson();
+
+                }
                 else if (option2 == "4") {
                     cout << "not completed";
-                } 
+                }
                 else if (option2 == "5") {
+                    C.DeleteOrdHistory();
                     cout << "not completed";
-                } 
+                }
                 else if (option2 == "6") {
                     cout << "not completed";
-                } 
+                }
                 else if (option2 == "7") {
                     cout << "not completed";
                 }
-            
-            
-                
-                
+
+
+
+
 
                 else if (option == "2") {
                     cout << "not completed";

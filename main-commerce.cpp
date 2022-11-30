@@ -23,7 +23,7 @@ int main() {
     Inventory A;
     DoublyList customers;
     readfile(list);
-    
+
     bool loop {true};
     while (loop)
     {
@@ -45,22 +45,19 @@ int main() {
         }
             //  add menu option handling
 
-        // Login
-        else if (option == "1")
-        {
+            // Login
+        else if (option == "1") {
 
             string userName;
             bool found{false};
 
             // Find Username
-            while (!found)
-            {
+            while (!found) {
                 cout << "Enter your username (case sensitive) \nEnter 'back' to return to previous screen: ";
                 cin >> userName;
                 found = customers.search(userName);
 
-                if (userName == "back")
-                {
+                if (userName == "back") {
                     found = true;
                     continue;
                 }
@@ -74,13 +71,11 @@ int main() {
 
             string password;
             bool login = false;
-            while(!login)
-            {
+            while (!login) {
                 cout << "Enter your password (enter 'back' to return to prev screen): ";
                 cin >> password;
 
-                if (password == "back")
-                {
+                if (password == "back") {
                     login = true;
                     continue;
                 }
@@ -109,12 +104,10 @@ int main() {
                 if (option2 == "0") {
                     loop = false;
                     continue;
-                }
-                else if (option2 == "1") {
+                } else if (option2 == "1") {
                     B.displayCart(item);
                     continue;
-                }
-                else if (option2 == "2") {
+                } else if (option2 == "2") {
                     string option3;
                     cout << "Display Options" << endl;
                     cout << "1. View All " << endl;
@@ -222,16 +215,13 @@ int main() {
                     if (option3 == "8") {
                         cout << "not finished yet;" << endl;
                     }
-                }
-                else if (option2 == "3") {
+                } else if (option2 == "3") {
                     cout << "not completed";
-                }
-                else if (option2 == "4") // Edit Account
+                } else if (option2 == "4") // Edit Account
                 {
-                    string choice {"0"};
+                    string choice{"0"};
                     bool menuLoop = true;
-                    while (menuLoop)
-                    {
+                    while (menuLoop) {
                         cout << "\n---------------------------\n";
                         cout << "What would you like to edit?" << endl;
                         cout << "1. Username/Password" << endl;
@@ -245,15 +235,14 @@ int main() {
                         if (choice == "1") // username/password
                         {
                             string decision;
-                            bool edit (true);
+                            bool edit(true);
                             cout << "1. Username" << endl;
                             cout << "2. Password" << endl;
                             cout << "3. Go Back" << endl;
                             cout << "Enter: ";
                             cin >> decision;
 
-                            if (decision == "1")
-                            {
+                            if (decision == "1") {
                                 string newName;
                                 cout << "Enter new username: ";
                                 cin >> newName;
@@ -261,49 +250,38 @@ int main() {
                                 customers.changeName(userName, newName);
                                 cout << "Done, " << newName << endl;
                                 continue;
-                            }
-                            else if (decision == "2")
-                            {
+                            } else if (decision == "2") {
                                 string newPass;
                                 cout << "Enter new password: ";
                                 cin >> newPass;
 
                                 customers.changePass(userName, newPass);
                                 continue;
-                            }
-                            else if (decision == "3")
-                            {
+                            } else if (decision == "3") {
                                 continue;
-                            }
-                            else
-                            {
+                            } else {
                                 cout << "Invalid input..." << endl;
                                 continue;
                             }
-                        }
-                        else if (choice == "2") // Shipping
+                        } else if (choice == "2") // Shipping
                         {
-                            bool shipLoop (true);
-                            string decision {"0"};
-                            while (shipLoop)
-                            {
+                            bool shipLoop(true);
+                            string decision{"0"};
+                            while (shipLoop) {
                                 cout << "1. Address" << endl;
                                 cout << "2. City" << endl;
                                 cout << "3. State" << endl;
                                 cout << "4. Zip Code" << endl;
                                 cout << "5. Go Back" << endl;
 
-                                if (decision == "1")
-                                {
+                                if (decision == "1") {
                                     string newAddy;
                                     cout << "Enter new address: ";
                                     getline(cin, newAddy);
 
                                     customers.changeAddy(userName, newAddy);
                                     continue;
-                                }
-                                else if (decision == "2")
-                                {
+                                } else if (decision == "2") {
                                     string newCity;
                                     cout << "Enter new city: ";
                                     cin >> newCity;
@@ -311,42 +289,32 @@ int main() {
                                     customers.changeCity(userName, newCity);
                                     continue;
 
-                                }
-                                else if (decision == "3")
-                                {
+                                } else if (decision == "3") {
                                     string newState;
                                     cout << "Enter new state: ";
                                     cin >> newState;
 
                                     customers.changeState(userName, newState);
                                     continue;
-                                }
-                                else if (decision == "4")
-                                {
+                                } else if (decision == "4") {
                                     int newZip;
                                     cout << "Enter new zip code: ";
                                     cin >> newZip;
 
                                     customers.changeZip(userName, newZip);
                                     continue;
-                                }
-                                else if (decision == "5")
-                                {
+                                } else if (decision == "5") {
                                     shipLoop = false;
                                     continue;
-                                }
-                                else
-                                {
+                                } else {
                                     cout << "Invalid input..." << endl;
                                 }
                             }
-                        }
-                        else if (choice == "3") // Payment
+                        } else if (choice == "3") // Payment
                         {
-                            string decision {"0"};
+                            string decision{"0"};
                             bool moneyLoop(true);
-                            while (moneyLoop)
-                            {
+                            while (moneyLoop) {
                                 cout << "1. Card Number" << endl;
                                 cout << "2. Expiration Date" << endl;
                                 cout << "3. Security Code" << endl;
@@ -355,51 +323,40 @@ int main() {
                                 cout << "Enter choice: ";
                                 cin >> decision;
 
-                                if (decision == "1")
-                                {
+                                if (decision == "1") {
                                     int newNum;
                                     cout << "Enter the last 4 digits of new card: ";
                                     cin >> newNum;
 
-                                    if (customers.checkCardNum(newNum))
-                                    {
+                                    if (customers.checkCardNum(newNum)) {
                                         customers.changeCard(userName, newNum);
-                                    }
-                                    else
+                                    } else
                                         cout << "Input is out of range... " << endl;
 
                                     continue;
-                                }
-                                else if (decision == "2")
-                                {
+                                } else if (decision == "2") {
                                     int newDate;
                                     cout << "Enter the new Expiration Date iin MMYY format: ";
                                     cin >> newDate;
 
-                                    if(customers.checkExpDate(newDate))
+                                    if (customers.checkExpDate(newDate))
                                         customers.changeExpDate(userName, newDate);
                                     else
                                         cout << "Input is out of range... " << endl;
 
                                     continue;
-                                }
-                                else if (decision == "3")
-                                {
+                                } else if (decision == "3") {
                                     int newCode;
                                     cout << "Enter the new 3 digit security code: ";
                                     cin >> newCode;
 
-                                    if(customers.checkSecurCode(newCode))
-                                    {
+                                    if (customers.checkSecurCode(newCode)) {
                                         customers.changeSecurCode(userName, newCode);
-                                    }
-                                    else
+                                    } else
                                         cout << "Input is out of range.. " << endl;
 
                                     continue;
-                                }
-                                else if (decision == "4")
-                                {
+                                } else if (decision == "4") {
                                     string newName;
                                     cout << "Enter the name on the card: ";
                                     getline(cin, newName);
@@ -407,40 +364,32 @@ int main() {
                                     customers.changeCardName(userName, newName);
 
                                     continue;
-                                }
-                                else if (decision == "5")
-                                {
+                                } else if (decision == "5") {
                                     moneyLoop = false;
                                     continue;
-                                }
-                                else
+                                } else
                                     cout << "Invalid input..." << endl;
                             }
 
 
-
-                        }
-                        else if (choice == "4") // Return to previous screen
+                        } else if (choice == "4") // Return to previous screen
                         {
                             menuLoop = false;
                             continue;
-                        }
-                        else // Otherwise
+                        } else // Otherwise
                             cout << "Invalid input... " << endl;
                     }
 
 
-
-                }
-                else if (option2 == "5") {
+                } else if (option2 == "5") {
+                    cout << "not completed";
+                } else if (option2 == "6") {
+                    cout << "not completed";
+                } else if (option2 == "7") {
                     cout << "not completed";
                 }
-                else if (option2 == "6") {
-                    cout << "not completed";
-                }
-                else if (option2 == "7") {
-                    cout << "not completed";
-                }
+            }
+        }
 
 
 

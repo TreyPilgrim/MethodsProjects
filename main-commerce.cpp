@@ -50,16 +50,16 @@ int main() {
                 cout << "Enter choice: ";
                 cin >> option2;
                 cout << endl;
-                if(option2=="0"){
+                if (option2 == "0") {
                     break;
                 }
-                if(option2 =="1"){
+                if (option2 == "1") {
                     B.displayCart(item);
                     continue;
                 }
-                if(option2=="2"){
+                if (option2 == "2") {
                     string option3;
-                    cout<< "Display Options"<<endl;
+                    cout << "Display Options" << endl;
                     cout << "1. View All " << endl;
                     cout << "2. View by Genre " << endl;
                     cout << "3. View by Director" << endl;
@@ -72,7 +72,7 @@ int main() {
                     cin >> option3;
                     cout << endl;
 
-                    if(option3 == "1") {
+                    if (option3 == "1") {
                         string addOption;
                         A.viewAllInventory(list);
                         display(list);
@@ -87,8 +87,8 @@ int main() {
                         } else {
                             break;
                         }
-                   
- 
+
+
                     }
                     if (option3 == "2") {
                         string addOption;
@@ -156,16 +156,35 @@ int main() {
                         }
 
                     }
-                    if (option3 == "6"){
-                        cout <<"not finished yet;"  << endl;
+                    if (option3 == "6") {
+                        cout << "not finished yet;" << endl;
                     }
-                    if (option3 == "7"){
-                        cout <<"not finished yet;"  << endl;
+                    if (option3 == "7") {
+                        cout << "not finished yet;" << endl;
                     }
-                    if (option3 == "8"){
-                        cout <<"not finished yet;"  << endl;
+                    if (option3 == "8") {
+                        cout << "not finished yet;" << endl;
                     }
+                } 
+                else if (option2 == "3") {
+                    cout << "not completed";
+                } 
+                else if (option2 == "4") {
+                    cout << "not completed";
+                } 
+                else if (option2 == "5") {
+                    cout << "not completed";
+                } 
+                else if (option2 == "6") {
+                    cout << "not completed";
+                } 
+                else if (option2 == "7") {
+                    cout << "not completed";
                 }
+            
+            
+                
+                
 
                 else if (option == "2") {
                     cout << "not completed";
@@ -184,95 +203,95 @@ int main() {
             }
         }
     }}
-        int convertStringtoInt(string str){
-            stringstream ss;
-            ss << str;
-            int num;
-            ss>> num;
-            return num;
-        }
-        float convertStringtoFloat(string str){
-            stringstream ss;
-            ss << str;
-            float num;
-            ss>> num;
-            return num;
-        }
+int convertStringtoInt(string str){
+    stringstream ss;
+    ss << str;
+    int num;
+    ss>> num;
+    return num;
+}
+float convertStringtoFloat(string str){
+    stringstream ss;
+    ss << str;
+    float num;
+    ss>> num;
+    return num;
+}
 
 
-        void readfile(vector<Inventory>&list)
-        {
-            ifstream infile;
-            string line;
+void readfile(vector<Inventory>&list)
+{
+    ifstream infile;
+    string line;
 
 
-            infile.open("INVENTORY.txt");
+    infile.open("INVENTORY.txt");
 
-            if(infile.is_open())
-            {
-                cout << "Successful inventory opening." << endl;
-            }
+    if(infile.is_open())
+    {
+        cout << "Successful inventory opening." << endl;
+    }
 
-            else
-            {
-                cout << "Couldn't locate file. Program closing." << endl;
-                exit(EXIT_FAILURE);
-            }
-
-
-            while(getline(infile, line))
-            {
-
-                string Name, directorName, genre,price,stock, movieID;
-                float price1;
-                float stock1;
-                Name = line;
-
-                getline(infile,line);
-                directorName = line;
-
-                getline(infile,line);
-                genre = line;
-
-                getline(infile,line);
-                price=line;
-
-                getline(infile,line);
-                stock =line;
-
-                getline(infile,line);
-                movieID =line;
-
-                getline(infile, line);
-
-                price1 = convertStringtoFloat(price);
-                stock1 = convertStringtoInt(stock);
-
-                Inventory tmp;
-                tmp.setName(Name);
-
-                tmp.setDirectorName(directorName);
-                tmp.setGenre(genre);
-                tmp.setPrice(price1);
-                tmp.setStock(stock1);
-                tmp.setMovieID(movieID);
-
-                list.push_back(tmp);
+    else
+    {
+        cout << "Couldn't locate file. Program closing." << endl;
+        exit(EXIT_FAILURE);
+    }
 
 
-            }
+    while(getline(infile, line))
+    {
 
-            infile.close();
-            list.pop_back();
+        string Name, directorName, genre,price,stock, movieID;
+        float price1;
+        float stock1;
+        Name = line;
 
-        }
-        void display(vector<Inventory>list){
-            for (int i = 0; i < list.size(); i++) {
-                Inventory currItem;
-                currItem = list.at(i);
-                cout << i + 1 << ". " << currItem.getName() << endl;
-                cout << "Director:" << currItem.getDirectorName() << endl;
-                cout << "Genre:" << currItem.getGenre() << endl;
-                cout << "Price:" << currItem.getPrice() << endl;
-            }
-        }
+        getline(infile,line);
+        directorName = line;
+
+        getline(infile,line);
+        genre = line;
+
+        getline(infile,line);
+        price=line;
+
+        getline(infile,line);
+        stock =line;
+
+        getline(infile,line);
+        movieID =line;
+
+        getline(infile, line);
+
+        price1 = convertStringtoFloat(price);
+        stock1 = convertStringtoInt(stock);
+
+        Inventory tmp;
+        tmp.setName(Name);
+
+        tmp.setDirectorName(directorName);
+        tmp.setGenre(genre);
+        tmp.setPrice(price1);
+        tmp.setStock(stock1);
+        tmp.setMovieID(movieID);
+
+        list.push_back(tmp);
+
+
+    }
+
+    infile.close();
+    list.pop_back();
+
+}
+void display(vector<Inventory>list){
+    for (int i = 0; i < list.size(); i++) {
+        Inventory currItem;
+        currItem = list.at(i);
+        cout << i + 1 << ". " << currItem.getName() << endl;
+        cout << "Director:" << currItem.getDirectorName() << endl;
+        cout << "Genre:" << currItem.getGenre() << endl;
+        cout << "Price:" << currItem.getPrice() << endl;
+    }
+}

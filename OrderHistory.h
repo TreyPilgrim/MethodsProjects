@@ -1,6 +1,6 @@
-
 #include "ShoppingCart.h"
 # include "OHNode.h"
+# include <string>
 
 
 class OrderHistory
@@ -15,7 +15,6 @@ private:
 
 public:
 	OrderHistory(): head(nullptr), tail(nullptr) {}
-	~OrderHistory();
 	void append(string UserName, string OrderContents);
 	bool remove(string UserName, string OrderContents);
 	void display(string UserName, string OrderContents, std::ostream &os);

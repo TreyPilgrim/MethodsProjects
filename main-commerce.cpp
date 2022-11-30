@@ -17,6 +17,8 @@ int main() {
     ShoppingCart B;
     Inventory A;
     OrderHistory C;
+    string name;
+    string items2;
     readfile(list);
     while (1) {
         string option;
@@ -182,8 +184,8 @@ int main() {
                     }
                 }
                 else if (option2 == "3") {
-                    C.AddOrdHistory();
-                    B.RemoveCartFromPerson();
+                    C.AddOrdHistory(items2, item);
+                    B.RemoveCartFromPerson(name);
 
                 }
                 else if (option2 == "4") {

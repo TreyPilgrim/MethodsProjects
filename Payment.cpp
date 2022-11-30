@@ -1,33 +1,68 @@
-#pragma once
-#include <string>
+#include "Payment.h"
 
-using std::string;
-class Payment
+#include <utility>
+// Getters
+int Payment::getCardNum()
 {
-private:
+    return this->cardNum;
+}
 
-    int cardNum {0}; // Last 4 digits of card
-    int expDate {0000};
-    int securityCode {};
-    string cardName {"Default"};
+int Payment::getExpDate() const
+{
+    return this->expDate;
+}
 
-public:
+int Payment::getSecurCode() const
+{
+    return this->securityCode;
+}
 
-    // getters
-    int getCardNum();
-    int getExpDate() const;
-    int getSecurCode() const;
-    string getName();
+string Payment::getName()
+{
+    return this->cardName;
+}
+// setters
+void Payment::setCardNum(int num)
+{
+    cardNum = num;
+}
 
-    //setters
-    void setCardNum(int num);
-    void setExpDate(int date);
-    void setSecurCode(int code);
-    void setCardName(string name);
+void Payment::setExpDate(int date)
+{
+    expDate = date;
+}
 
-    // Checkers
-    static bool checkCardNum(int num);
-    static bool checkExpDate(int date);
-    static bool checkSecurCode(int code);
+void Payment::setSecurCode(int code)
+{
+    securityCode = code;
+}
 
-};
+void Payment::setCardName(std::string name)
+{
+    cardName = std::move(name);
+}
+
+// Checkers
+bool Payment::checkCardNum(int num)
+{
+    if (num > 0 && num <= 9999)
+        return true;
+    else
+        return false;
+}
+
+bool Payment::checkExpDate(int date)
+{
+    if (date >= 0122 && date <= 1299) // MM/YY format
+        return true;
+    else
+        return false;
+}
+
+bool Payment::checkSecurCode(int code)
+{
+    if (code >= 0 && code <= 999)
+        return true;
+    else
+        return false;
+}

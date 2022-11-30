@@ -384,8 +384,8 @@ int main() {
                 } else if (option2 == "7") {
                     cout << "not completed";
                 }
-            }
-        }
+            
+        
 
 
 

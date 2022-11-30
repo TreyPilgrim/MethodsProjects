@@ -19,9 +19,9 @@ public:
 	bool remove(string UserName, string OrderContents);
 	void display(string UserName, string OrderContents, std::ostream &os);
 	void prepend(string UserName, string OrderContents);
-	void AddOrdHistory(string &item, vector<ShoppingCart> &cart);
+	void AddOrdHistory(string &item, vector<ShoppingCart> &cart, string OrderFile);
 	void ViewOrdHistory();
-	void DeleteOrdHistory();
+	void DeleteOrdHistory(string UserName);
 
 	void setOrdContents();
 	std::string SetUserName(std:: string username);

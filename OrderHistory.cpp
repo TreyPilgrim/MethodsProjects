@@ -1,5 +1,7 @@
 #include "OrderHistory.h"
 #include "ShoppingCart.h"
+# include <string>
+using namespace std;
 
 
 
@@ -40,8 +42,16 @@ void AddOrdHistory(string UserName, vector<ShoppingCart> &cart, std::string Orde
 
 
 
-void ViewOrdHistory();
-void DeleteOrdHistory();
+void OrderHistory::ViewOrdHistory();
+void OrderHistory:: DeleteOrdHistory(string UserName){
+  OrderHistory A;
+  node* tmp = head;
+	while (tmp != nullptr){
+  if(tmp->UserName==UserName){
+    A.remove(tmp->UserName, tmp-> OrderContents);
+    
+  }}
+};
 
 void OrderHistory::append(string UserName, string OrderContents) {
 

@@ -1,28 +1,28 @@
 Titanic 
 James Cameron
 Romance
-9.71
+9.00
 10
 2345
 
 The Hate U Give 
 George Tillman Jr.
 Drama 
-8.99
+8.00
 15
 1234
 
 Get Out 
 Jordan Peele
 Horror 
-10.99
+10.00
 13
 5678
 
 Bad Boys
 Micheal Bay  
 Action
-8.99
+8.00
 16
 4532
 
@@ -30,14 +30,14 @@ Action
 Welcome Home Roscoe Jenkins
 Malcom D. Lee
 Comedy 
-7.99
+7.00
 11
 9078
 
 Men In Black
 Barry Sonnenfirld
 Science Fiction
-7.99
+7.00
 12
 5634
 

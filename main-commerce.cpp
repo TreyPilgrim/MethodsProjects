@@ -15,7 +15,7 @@ int main() {
     OrderHistory C;
     string name;
     string items2;
-    readfile(list);
+    A.readfile(list);
     while (1) {
         string option;
         // displays menu

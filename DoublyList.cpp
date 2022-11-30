@@ -18,7 +18,7 @@ bool DoublyList::peek()
 // Search Functionality
 bool DoublyList::search(ptr &customer, const std::string& userName)
 {
-    if(!this->peek())
+    if(customer == nullptr)
         return false;
     else if (customer->getName() == userName)
         return true;
@@ -48,7 +48,129 @@ bool DoublyList::remove(ptr &customer, const string& userName)
     else // otherwise, call function at next customer
         return remove(customer->next, userName);
 }
+bool DoublyList::login(ptr &customer, std::string userName, std::string password)
+{
+    if (customer->userName == userName)
+    {
+        if (customer->password == password)
+            return true;
+        else
+        {
+            cout << "Incorrect password..." << endl;
+            return false;
+        }
+    }
+    else
+        return login(customer->next, userName, password);
 
+}
+
+/*
+ * Void Return Type
+ */
+
+// Edit Basic Info
+void DoublyList::changeName(ptr &customer, const string& oldName, const std::string &newName)
+{
+    if (customer->userName == oldName)
+    {
+        customer->userName = newName;
+    }
+    else
+        changeName(customer->next, oldName, newName);
+}
+
+void DoublyList::changePass(ptr &customer, const std::string &userName, const std::string &newPass)
+{
+    if (customer->userName == userName)
+    {
+        customer->password = newPass;
+    }
+    else
+        changePass(customer->next, userName, newPass);
+}
+
+// Edit Shipment
+void DoublyList::changeAddy (ptr & customer, const string &userName, const string &newAddy)
+{
+    if (customer->userName == userName)
+    {
+        customer->shipment.setAddress(newAddy);
+    }
+    else
+        changeAddy(customer->next, userName, newAddy);
+}
+
+void DoublyList::changeCity(ptr &customer, const std::string &userName, const std::string &newCity)
+{
+    if (customer->userName == userName)
+    {
+        customer->shipment.setCity(newCity);
+    }
+    else
+        changeCity(customer->next, userName, newCity);
+}
+
+void DoublyList::changeState(ptr &customer, const std::string &userName, const std::string &newState)
+{
+    if (customer->userName == userName)
+    {
+        customer->shipment.setState(newState);
+    }
+    else
+        changeState(customer->next, userName, newState);
+}
+
+void DoublyList::changeZip(ptr &customer, const std::string &userName, const int newZip)
+{
+    if (customer->userName == userName)
+    {
+        customer->shipment.setZip(newZip);
+    }
+    else
+        changeZip(customer->next, userName, newZip);
+}
+
+// Edit Payment
+void DoublyList::changeCard(ptr &customer, const std::string &userName, int newNum)
+{
+    if (customer->userName == userName)
+    {
+        customer->card.setCardNum(newNum);
+    }
+    else
+        changeCard(customer->next, userName, newNum);
+}
+
+void DoublyList::changeExpDate(ptr &customer, const std::string &userName, int newExpDate)
+{
+    if (customer->userName == userName)
+    {
+        customer->card.setExpDate(newExpDate);
+    }
+    else
+        changeExpDate(customer->next, userName, newExpDate);
+}
+
+void DoublyList::changeSecurCode(ptr &customer, const std::string &userName, int code)
+{
+    if (customer->userName == userName)
+    {
+        customer->card.setSecurCode(code);
+    }
+    else
+        changeSecurCode(customer->next, userName, code);
+}
+
+void DoublyList::changeCardName(ptr &customer, const std::string &userName, std::string newName)
+{
+    if (customer->userName == userName)
+    {
+        customer->card.setCardName(newName);
+    }
+    else
+        changeCardName(customer->next, userName, newName);
+}
 /*
  *                  Public Functions
  */
@@ -59,6 +181,11 @@ bool DoublyList::remove(ptr &customer, const string& userName)
 bool DoublyList::search(const string& userName)
 {
     return search(head, userName);
+}
+
+bool DoublyList::login(string userName, string password)
+{
+    return login(this->head, userName, password);
 }
 /*
  *  Void Return Type
@@ -74,7 +201,7 @@ void DoublyList::append(string &userName)
         return;
     }
 
-    ptr newCustmer = make_shared<Custmer>(userName);
+    ptr newCustmer = make_shared<Customer>(userName);
     if (head == nullptr) // if empty list, update head
         head = newCustmer;
     else // otherwise, add to end of list
@@ -92,13 +219,13 @@ void DoublyList::append(string &userName)
 void DoublyList::prepend(std::string &userName)
 {
     // check that userName is unique
-    if (search(head, userName))
+    if (search(userName))
     {
         cout << userName << " already exists in database." << endl;
         return;
     }
 
-    ptr newCustmer = make_shared<Custmer>(userName);
+    ptr newCustmer = make_shared<Customer>(userName);
     if (tail == nullptr) // if empty list, update tail
         tail = newCustmer;
     else // otherwise add newCustmer to beginning of list
@@ -110,7 +237,55 @@ void DoublyList::prepend(std::string &userName)
     // update head
     head = newCustmer;
 }
+void DoublyList::changeName(string oldName, std::string newName)
+{
+    changeName(head, oldName, newName);
+}
 
+void DoublyList::changePass(std::string userName, std::string newPass)
+{
+    changePass(head, userName, newPass);
+}
+
+void DoublyList::changeAddy(const std::string& userName, const std::string& newAddy)
+{
+    changeAddy(this->head, userName, newAddy);
+}
+
+void DoublyList::changeCity(const string& userName, const string& newCity)
+{
+    changeCity(head, userName, newCity);
+}
+
+void DoublyList::changeState(const string& userName, const string& newState)
+{
+    changeState(head, userName, newState);
+}
+
+void DoublyList::changeZip(const string& userName, int newZip)
+{
+    changeZip(head, userName, newZip);
+}
+
+void DoublyList::changeCard(const std::string &userName, int newNum)
+{
+    changeCard(this->head, userName, newNum);
+}
+
+void DoublyList::changeExpDate(const std::string &userName, int newExpDate)
+{
+    changeExpDate(this->head, userName, newExpDate);
+}
+
+void DoublyList::changeSecurCode(const std::string &userName, int code)
+{
+    changeSecurCode(this->head, userName, code);
+}
+
+void DoublyList::changeCardName(const string &userName, string newName)
+{
+    changeCardName(head, userName, newName);
+}
 // Destructor Definition
 DoublyList::~DoublyList()
 {

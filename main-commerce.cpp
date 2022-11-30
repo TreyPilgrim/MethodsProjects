@@ -55,7 +55,7 @@ int main() {
             // Find Username
             while (!found)
             {
-                cout << "Enter your username (case sensitive) \nEnter 'exit' to return to previous screen: ";
+                cout << "Enter your username (case sensitive) \nEnter 'back' to return to previous screen: ";
                 cin >> userName;
                 found = customers.search(userName);
 

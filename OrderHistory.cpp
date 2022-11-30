@@ -13,16 +13,17 @@ void OrderHistory::setOrdContents() {
 }
 
 
-void AddOrdHistory(string UserName, vector<ShoppingCart>& cart, std::string OrderFile) {
+void AddOrdHistory(string UserName, vector<ShoppingCart> &cart, std::string OrderFile) {
 
 	ShoppingCart currentitem;
+  OrderHistory A;
 
-	for(int i = 0; i < cart.size; i++) {
+	for(int i = 0; i < cart.size(); i++) {
 
 		currentitem = cart.at(i);
 
-		if (UserName == cart.GetUserName(){
-            append(cart.GetUserName(),cart.GetItme());
+		if (UserName == currentitem.GetUserName()){
+            A.append(currentitem.GetUserName(), currentitem.GetName());
             }
     }
 			
@@ -30,7 +31,7 @@ void AddOrdHistory(string UserName, vector<ShoppingCart>& cart, std::string Orde
 
 			file.open(OrderFile, ios::app);
 			if (file.is_open()) {
-				file << 
+				file << "bloop" << endl;
 			}
 		}
 

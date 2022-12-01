@@ -66,6 +66,18 @@ bool DoublyList::login(ptr &customer, std::string userName, std::string password
 }
 
 /*
+ * String Return Type
+ */
+string DoublyList::showPassword(ptr &customer, const std::string &userName)
+{
+    if (customer->userName == userName)
+    {
+        return customer->password;
+    }
+    else
+        return showPassword(customer->next, userName);
+}
+/*
  * Void Return Type
  */
 
@@ -187,56 +199,40 @@ bool DoublyList::login(string userName, string password)
 {
     return login(this->head, userName, password);
 }
+
+/*
+ * String Return Type
+ */
+string DoublyList::showPassword(const std::string &userName)
+{
+    return showPassword(head, userName);
+}
+
 /*
  *  Void Return Type
  */
 // Append Functionality
-void DoublyList::append(string &userName)
+void DoublyList::append(string userName, string password, string addy, string city, string state, int zip,
+                        int cardNum, int expDate, int securCode, string cardName)
 {
-    // Check that userName is unique
-    // if it's not, return
-    if (this->search(userName))
-    {
-        cout << userName << " already exists in database." << endl;
-        return;
-    }
+    ptr newCustomer = make_shared<Customer>(userName);
+    newCustomer->setBasics(userName, std::move(password));
+    newCustomer->setShipping(std::move(addy), std::move(city), std::move(state), zip);
+    newCustomer->setPayment(cardNum, expDate, securCode, std::move(cardName));
 
-    ptr newCustmer = make_shared<Customer>(userName);
     if (head == nullptr) // if empty list, update head
-        head = newCustmer;
+        head = newCustomer;
     else // otherwise, add to end of list
     {
-        tail->next = newCustmer;
-        newCustmer->prev = tail;
+        tail->next = newCustomer;
+        newCustomer->prev = tail;
     }
 
     // update tail
-    tail = newCustmer;
-
+    tail = newCustomer;
 }
 
-// Prepend Functionality
-void DoublyList::prepend(std::string &userName)
-{
-    // check that userName is unique
-    if (search(userName))
-    {
-        cout << userName << " already exists in database." << endl;
-        return;
-    }
-
-    ptr newCustmer = make_shared<Customer>(userName);
-    if (tail == nullptr) // if empty list, update tail
-        tail = newCustmer;
-    else // otherwise add newCustmer to beginning of list
-    {
-        head->prev = newCustmer;
-        newCustmer->next = head;
-    }
-
-    // update head
-    head = newCustmer;
-}
+// Updaters
 void DoublyList::changeName(string oldName, std::string newName)
 {
     changeName(head, oldName, newName);

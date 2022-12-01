@@ -9,14 +9,13 @@ class Customer;
 using ptr = std::shared_ptr<Customer>;
 using namespace std;
 
-class Customer
+class Customer: public Payment, public Shipping
 {
 public:
     ptr next;
     ptr prev;
 
     // Base info
-    int cartNum {-1};
     string userName;
     string password;
 
@@ -32,11 +31,12 @@ public:
     explicit Customer(string &userName):
             next {nullptr}, prev {nullptr}, userName{userName} {}
 
+
     string getName() const;
 
     bool setCartNum (vector<ShoppingCart> cart);
 
-
+    void setBasics(string userName, string password);
 
 };
 

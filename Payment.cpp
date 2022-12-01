@@ -42,10 +42,17 @@ void Payment::setCardName(std::string name)
     cardName = std::move(name);
 }
 
+void Payment::setPayment(int cardNum, int expDate, int securCode, string cardName)
+{
+    this->cardNum = cardNum;
+    this->expDate = expDate;
+    this->securityCode = securCode;
+    this->cardName = cardName;
+}
 // Checkers
 bool Payment::checkCardNum(int num)
 {
-    if (num > 0 && num <= 9999)
+    if (num >= 0 && num <= 9999)
         return true;
     else
         return false;

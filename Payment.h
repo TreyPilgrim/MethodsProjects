@@ -24,10 +24,11 @@ public:
     void setExpDate(int date);
     void setSecurCode(int code);
     void setCardName(string name);
+    void setPayment(int cardNum, int expDate, int securCode, string cardName);
 
     // Checkers
-    static bool checkCardNum(int num);
-    static bool checkExpDate(int date);
-    static bool checkSecurCode(int code);
+    bool checkCardNum(int num);
+    bool checkExpDate(int date);
+    bool checkSecurCode(int code);
 
 };

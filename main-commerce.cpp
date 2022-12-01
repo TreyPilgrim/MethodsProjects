@@ -203,13 +203,47 @@ int main() {
 
                     }
                     if (option3 == "6") {
-                        cout << "not finished yet;" << endl;
+                       string nameOption;
+                       int searchret;
+                       cout << "What are you searching for?" << endl;
+                       cin >> nameOption;
+                       searchret = A.searchByName(list ,nameOption);
+                       if(searchret==-1){
+                           cout << "Movie is not there." << endl;
+                        }
+                       else{
+                           cout << "Movie is  found."
+                       }
+                       break;
                     }
                     if (option3 == "7") {
-                        cout << "not finished yet;" << endl;
+                       string genreOption;
+                       int searchret;
+                       cout << "What are you searching for?" << endl;
+                       cin >> genreOption;
+                       searchret = A.searchByGenre(list ,genreOption);
+                       if(searchret==-1){
+                           cout << "Movie is not there." << endl;
+                        }
+                       else{
+                           cout << "Movie is  found."
+                       }
+                       break;
                     }
                     if (option3 == "8") {
-                        cout << "not finished yet;" << endl;
+                        string directorOption;
+                       int searchret;
+                       cout << "What are you searching for?" << endl;
+                       cin >> directorOption;
+                       searchret = A.searchBydirector(list ,genreOption);
+                       if(searchret==-1){
+                           cout << "Movie is not there." << endl;
+                        }
+                       else{
+                           cout << "Movie is  found."
+                       }
+                       break;
+                        
                     }
                 } else if (option2 == "3") {
                     cout << "not completed";

@@ -1,42 +1,31 @@
-#pragma once
-#include <memory>
-#include <string>
-#include <vector>
-#include "ShoppingCart.h"
-#include "Shipping.h"
-#include "Payment.h"
-class Customer;
-using ptr = std::shared_ptr<Customer>;
-using namespace std;
+#include "Customer.h"
 
-class Customer: public Payment, public Shipping
+#include <utility>
+
+string Customer::getName() const
 {
-public:
-    ptr next;
-    ptr prev;
+    return this->userName;
+}
 
-    // Base info
-    string userName;
-    string password;
+bool Customer::setCartNum(vector<ShoppingCart> cart)
+{
+    for (int i{0}; i < cart.size(); i++)
+    {
+        string tmpUser {cart.at(i).GetUserName()};
 
-    // shipping
-    Shipping shipment;
+        if (tmpUser == this->userName)
+        {
+            this->cartNum = i;
+            return true;
+        }
+    }
 
-    // Payment
-    Payment card;
+    return false;
+}
 
-    Customer():
-            next {nullptr}, prev {nullptr}, userName{"Default"} {}
-
-    explicit Customer(string &userName):
-            next {nullptr}, prev {nullptr}, userName{userName} {}
-
-
-    string getName() const;
-
-    bool setCartNum (vector<ShoppingCart> cart);
-
-    void setBasics(string userName, string password);
-    
-};
+void Customer::setBasics(std::string userName, std::string password)
+{
+    this->userName =userName;
+    this->password = std::move(password);
+}
 

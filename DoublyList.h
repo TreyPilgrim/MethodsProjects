@@ -15,13 +15,18 @@ private:
     bool peek();
     bool search(ptr &customer, const string& userName);
     bool remove(ptr &customer, const string& userName);
+    bool login (ptr &customer,string userName, string password);
+
+    string showPassword (ptr &customer, const string &userName);
 
     void changeName(ptr &customer, const string& oldName, const string& newName);
     void changePass(ptr &customer, const string &userName, const string& newPass);
+
     void changeAddy (ptr & customer, const string &userName, const string &newAddy);
     void changeCity(ptr &customer, const string &userName, const string &newCity);
     void changeState(ptr &customer, const string &userName, const string &newState);
-    void changeZip(ptr &customer, const string &userName, const int newZip);
+    void changeZip(ptr &customer, const string &userName, int newZip);
+
     void changeCard(ptr &customer, const string &userName, int newNum);
     void changeExpDate(ptr &customer, const string &userName, int newExpDate);
     void changeSecurCode(ptr &customer, const string &userName, int code);
@@ -36,8 +41,10 @@ public:
     bool search(const string& userName);
     bool login (string userName, string password);
 
-    void append(string &userName);
-    void prepend(string &userName);
+    string showPassword(const string & userName);
+
+    void append(string userName, string password, string addy, string city, string state, int zip,
+                            int cardNum, int expDate, int securCode, string cardName);
 
     // basic info editing
     void changeName(string oldName, string newName);
@@ -56,7 +63,6 @@ public:
     void changeCardName(const string &userName, string newName);
 
     bool remove(const string& userName) { return remove(this->head, userName);}
-    bool login (ptr &customer,string userName, string password);
 
 
 };

@@ -407,6 +407,191 @@ int main() {
                 return 0;
             }
         }
+        else if (option == "2") // Create an Account
+        {
+            bool validNum {false};
+            string userName;
+            string passWord;
+
+            string addy;
+            string city;
+            string state;
+            int zip;
+
+            int cardNum;
+            int expDate;
+            int securCode;
+            string cardName;
+
+            // get username
+            while (!validNum)
+            {
+                cout << "Enter a username (no spaces, enter 'cancel' to stop): ";
+                cin >> userName;
+
+                if (customers.search(userName))
+                {
+                    cout << "Username already exits...\n";
+                    continue;
+                }
+                else
+                    validNum = true;
+
+            }
+            validNum = false; // reset validNum for next While loop
+
+            if (userName == "cancel")
+                continue;
+
+            // get password
+            cout << "Enter a password (no spaces, enter 'cancel' to stop): ";
+            cin >> passWord;
+
+            if (passWord == "cancel")
+                continue;
+
+            // get address
+            cout << "Enter the full street address (enter 'cancel' to stop): ";
+            getline(cin, addy);
+
+            if (addy == "cancel")
+                continue;
+
+            // get city
+            cout << "Enter the city/town (enter 'cancel' to stop): ";
+            getline(cin, city);
+
+            if (city == "cancel")
+                continue;
+
+            // get state
+            cout << "Enter the state (enter 'cancel' to stop): ";
+            getline(cin, state);
+
+            if (state == "cancel")
+                continue;
+
+            // get zipcode
+            cout << "Enter the zip code (enter '0' to stop): ";
+            cin >> zip;
+
+            while (cin.fail()) // error handling
+            {
+                cin.clear();
+                cin.ignore();
+                cout << "I've never heard of that zip code? Does it have a numerical equivalent?"
+                        "\nPreferably 5 digits long this time (enter '0' to cancel): ";
+                cin >> zip;
+            }
+
+            if (zip == 0)
+                continue;
+
+            // get cardNum
+            while (!validNum)
+            {
+                cout << "Enter last 4 numbers of the card (enter '0' to cancel): ";
+                cin >> cardNum;
+
+                while (cin.fail())
+                {
+                    cin.clear();
+                    cin.ignore();
+                    cout << "Please enter the last 4 NUMBERS of the card (enter '0' to cancel): ";
+                    cin >> cardNum;
+                }
+
+                // Ensure that Zip code is in range
+                if (cardNum >= 0 && cardNum <= 99999)
+                    validNum = true;
+                else
+                    continue;
+            }
+
+            if (cardNum == 0)
+                continue;
+
+            validNum = false; // reset validNum
+            // expDate
+            while(!validNum)
+            {
+                cout << "Enter the card's expiration date (MMYY format; enter '0000' to go back): ";
+                cin >> expDate;
+
+                while (cin.fail()) // error handling
+                {
+                    cin.clear();
+                    cin.ignore();
+                    cout << "Invalid input...\n"
+                            "Enter the card's expiration date (MMYY format; enter '0' to go back): ";
+                    cin >> expDate;
+                }
+
+                if (!customers.checkExpDate(expDate))
+                    continue;
+                else
+                    validNum = true;
+
+            }
+
+            if (expDate == 0)
+                continue;
+
+            validNum = false; // reset validNum
+            // get Security #
+            while(!validNum)
+            {
+                cout << "Enter the card's security number (enter '0' to go back): ";
+                cin >> securCode;
+
+                while (cin.fail()) // error handling
+                {
+                    cin.clear();
+                    cin.ignore();
+                    cout << "Invalid input...\n"
+                            "Enter the card's security number (enter '0' to go back): ";
+                    cin >> securCode;
+                }
+
+                if (!customers.checkSecurCode(securCode))
+                    continue;
+                else
+                    validNum = true;
+
+            }
+
+            if (securCode == 0)
+                continue;
+
+            cout << "Enter the name on the card: ";
+            getline(cin, cardName);
+
+            customers.append(userName, passWord, addy, city, state, zip, cardNum, expDate, securCode, cardName);
+
+        }
+        else if (option == "3") // Forgot Password
+        {
+            string userName;
+            cout << "Enter your username: ";
+            cin >> userName;
+
+            bool found = customers.search(userName);
+
+            if (found)
+            {
+                cout << "Your password is: " << customers.showPassword(userName) << endl;
+
+            }
+            else
+            {
+                cout << "No users found with that username. Try creating an account" << endl;
+            }
+
+            continue;
+        }
+
+    }
+}
     }
 }
 

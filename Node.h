@@ -2,6 +2,7 @@
 #include <memory>
 #include <string>
 #include "Shipping.h"
+#include "Payment.h"
 class Node;
 using ptr = std::shared_ptr<Node>;
 using namespace std;
@@ -21,9 +22,7 @@ public:
    Shipping shipment;
 
     // Payment
-    int cardNum [16];
-    int cardExp {0000};
-    int cardSecurity {000};
+    Payment paypal;
 
     Node():
             next {nullptr}, prev {nullptr}, userName{"Default"} {};
@@ -31,11 +30,7 @@ public:
     explicit Node(string &userName):
             next {nullptr}, prev {nullptr}, userName{userName} {};
 
-
-
-
     string getName() const;
-
 
 
 };
